@@ -1,0 +1,28 @@
+<div class="shortener">
+  <h1>URL Shortener 🔗</h1>
+  <form [formGroup]="AddLinkForm" (ngSubmit)="onSubmit()">
+    <div class="form-group my-3">
+      <label for="link" class="mb-2">Paste link</label>
+      <input type="text" id="link" class="form-control" aria-describedby="url-help" placeholder="Enter URL"
+        formControlName="longUrl">
+      <small id="url-help" class="form-text text-muted">Shortened link will be available for 90 days</small>
+    </div>
+    <div class="form-group my-3">
+      <label for="ending" class="mb-2">Custom link ending</label>
+      <input type="text" class="form-control" id="ending" placeholder="custom" formControlName="ending">
+      <small id="ending-help" class="form-text text-muted">Link will be in format: gsu.ee/link?<b>custom</b></small>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="!AddLinkForm.valid">Shorten</button>
+  </form>
+
+  <div class="warning-msg" *ngIf="apiResponse && apiResponse.status == 'ERROR'">
+    <fa-icon [icon]="warningIcon"></fa-icon>
+    {{ apiResponse.message }}
+  </div>
+
+  <div class="success-msg" *ngIf="apiResponse && apiResponse.status == 'OK'">
+    <fa-icon [icon]="successIcon"></fa-icon>
+    Link {{apiResponse.url.short}} was created.<br>
+    It will be available until: {{apiResponse.url.validUntil}}
+  </div>
+</div>

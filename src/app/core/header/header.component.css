@@ -1,0 +1,17 @@
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+
+.solid {
+    background-color: whitesmoke;
+}
+
+.logo {
+    cursor: default;
+}
+
+.logo-name {
+    margin-left: 0.5rem;
+}
