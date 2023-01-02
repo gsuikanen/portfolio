@@ -2,6 +2,13 @@
     width: 600px;
 }
 
+@media screen and (max-width: 600px) {
+  .shortener {
+    width: 90vw;
+  }
+}
+
+
 .info-msg,
 .success-msg,
 .warning-msg,

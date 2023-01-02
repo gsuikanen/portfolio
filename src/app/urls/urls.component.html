@@ -12,7 +12,11 @@
       <input type="text" class="form-control" id="ending" placeholder="custom" formControlName="ending">
       <small id="ending-help" class="form-text text-muted">Link will be in format: gsu.ee/link?<b>custom</b></small>
     </div>
-    <button type="submit" class="btn btn-primary mt-3" [disabled]="!AddLinkForm.valid">Shorten</button>
+    <div class="form-group my-3">
+      <label for="days">Valid (days)</label>
+      <input type="number" class="form-control" id="days" min="1" max="365" formControlName="days">
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="!AddLinkForm.valid">Shorten</button>
+    </div>
   </form>
 
   <div class="warning-msg" *ngIf="apiResponse && apiResponse.status == 'ERROR'">

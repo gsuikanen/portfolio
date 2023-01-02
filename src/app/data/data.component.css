@@ -1,0 +1,21 @@
+.personal {
+    width: 600px;
+}
+
+@media screen and (max-width: 600px) {
+  .personal {
+    width: 90vw;
+  }
+}
+
+.flag {
+  width: 20px;
+}
+
+.data-label {
+  text-align: right;
+}
+
+.data {
+  text-align: left;
+}

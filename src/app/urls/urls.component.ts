@@ -9,7 +9,6 @@ import { faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-
   styleUrls: ['./urls.component.css']
 })
 export class UrlsComponent implements OnInit {
-  title = 'AddLinkForm';
   AddLinkForm: FormGroup;
   apiResponse: any;
   warningIcon = faExclamationCircle;
@@ -39,9 +38,7 @@ export class UrlsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.AddLinkForm.value);
     this.Api.postUrl(this.AddLinkForm.value).subscribe((res: any) => {
-      console.log(res);
       this.apiResponse = res;
       if (this.apiResponse.status == 'OK') {
         this.AddLinkForm.reset(this.AddLinkForm.value);

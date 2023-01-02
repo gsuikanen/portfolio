@@ -1,1 +1,65 @@
-<p>data works!</p>
+<div class="personal">
+    <h1>Personal data generator 🧑</h1>
+    <form [formGroup]="PersonForm" (ngSubmit)="onSubmit()">
+        <div class="form-group my-3">
+            <label for="country" class="mb-2">Select country</label>
+            <select class="form-select" id="country" formControlName="country">
+                <option value="" selected>Any</option>
+                <option value="EE">Estonia</option>
+                <option value="LV">Latvia</option>
+                <option value="LT">Lithuania</option>
+                <option value="FI">Finland</option>
+                <option value="SE">Sweden</option>
+            </select>
+        </div>
+        <div class="row my-3">
+            <div class="form-control-inline col col-md-6">
+                <label for="years" class="mb-2">Max age</label>
+                <input type="number" class="form-control" id="years" min="0" max="99" formControlName="maxAge">
+            </div>
+            <div class="form-control-inline col col-md-6">
+                <label for="country" class="mb-2">Gender</label>
+                <select class="form-select" id="country" formControlName="gender">
+                    <option value="" selected>Any</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Generate</button>
+    </form>
+
+    <div *ngIf="apiResponse && apiResponse.status == 'OK'" class="card text-center my-5">
+        <div class="card-header">
+            Meet {{ apiResponse.person.name }} from 
+            <img class="flag" src="https://flagicons.lipis.dev/flags/4x3/{{apiResponse.person.country | lowercase}}.svg" alt="{{apiResponse.person.country}}">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title mb-3">
+            <fa-icon [icon]="maleIcon" *ngIf="apiResponse.person.gender=='M'"></fa-icon>
+            <fa-icon [icon]="femaleIcon" *ngIf="apiResponse.person.gender=='F'"></fa-icon>
+            {{ apiResponse.person.name + " " + apiResponse.person.surname }}
+        </h3>
+          
+          <p class="row">
+            <strong class="col-md-6 data-label">Birthdate</strong>
+            <span class="col-md-6 data">{{ apiResponse.person.birthdate }}</span>
+          </p>
+
+          <p class="row">
+            <strong class="col-md-6 data-label">ID code</strong>
+            <span class="col-md-6 data">{{ apiResponse.person.idcode }}</span>
+          </p>
+
+          <p class="row">
+            <strong class="col-md-6 data-label">E-mail</strong>
+            <span class="col-md-6 data">{{ apiResponse.person.email }}</span>
+          </p>
+
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div>
+
+</div>
