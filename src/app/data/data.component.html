@@ -43,7 +43,7 @@
           
           <p class="row">
             <strong class="col-md-6 data-label">Birthdate</strong>
-            <span class="col-md-6 data">{{ apiResponse.person.birthdate }}</span>
+            <span class="col-md-6 data">{{ apiResponse.person.birthdate | dateprocessor }}</span>
           </p>
 
           <p class="row">
@@ -57,9 +57,7 @@
           </p>
 
         </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
+        <div class="card-footer text-muted"></div>
       </div>
 
 </div>

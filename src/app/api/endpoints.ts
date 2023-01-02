@@ -1,5 +1,5 @@
 export enum ApiEndpoints {
-    BASE_URL = 'http://localhost:9000',
+    BASE_URL = 'https://cryptic-taiga-01460.herokuapp.com',
     SHORTENER = '/api/url',
     PERSONAL = '/api/person',
 }
