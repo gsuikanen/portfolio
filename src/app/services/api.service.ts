@@ -21,7 +21,8 @@ export class ApiService {
   }
 
   getPerson(body: any) {
-    return this.http.get<any>(ApiEndpoints.BASE_URL + ApiEndpoints.PERSONAL, body)
+    const param = new HttpParams({ fromObject: body  });
+    return this.http.get<any>(ApiEndpoints.BASE_URL + ApiEndpoints.PERSONAL, {params: param})
     .pipe(retry({count: 3, delay: 500}))
   }
 }
