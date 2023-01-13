@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { faExclamationCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-urls',
@@ -13,16 +14,31 @@ export class UrlsComponent implements OnInit {
   apiResponse: any;
   warningIcon = faExclamationCircle;
   successIcon = faCheckCircle;
+  path: string[];
 
   constructor(private fb: FormBuilder,
-    private Api: ApiService) { }
+    private Api: ApiService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.AddLinkForm = this.fb.group({
-      longUrl: ['', Validators.required],
-      ending: '',
-      days: 90
-    });
+    this.path = this.router.url.split('/')
+    if (this.path.length == 3) {
+      this.Api.getUrl(this.path[2]).subscribe((res: any) => {
+        this.apiResponse = res;
+        console.log(this.apiResponse);
+        if (this.apiResponse.status == 'OK') {
+          window.location.href = this.apiResponse.url.long;
+        }
+      })
+    } else {
+      this.AddLinkForm = this.fb.group({
+        longUrl: ['', Validators.required],
+        ending: '',
+        days: 90
+      });
+    }
+
+    
   }
 
   get longUrl() {

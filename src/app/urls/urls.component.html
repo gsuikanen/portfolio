@@ -26,7 +26,7 @@
 
   <div class="success-msg" *ngIf="apiResponse && apiResponse.status == 'OK'">
     <fa-icon [icon]="successIcon"></fa-icon>
-    Link {{apiResponse.url.short}} was created.<br>
-    It will be available until: {{apiResponse.url.validUntil}}
+    Link will be available until: {{apiResponse.url.validUntil | dateprocessor}} <br>
+    <a href="{{apiResponse.url.short}}">{{apiResponse.url.short}}</a>
   </div>
 </div>

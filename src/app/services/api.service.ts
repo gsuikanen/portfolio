@@ -11,8 +11,10 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getUrl(body: any) {
-    return this.http.get<any>(ApiEndpoints.BASE_URL + ApiEndpoints.SHORTENER, body)
+  getUrl(ending: string) {
+    let param = new HttpParams()
+    param.append("ending", ending)
+    return this.http.get<any>(ApiEndpoints.BASE_URL + ApiEndpoints.SHORTENER, {params: param})
     .pipe(retry({count: 3, delay: 500}))
   }
 
