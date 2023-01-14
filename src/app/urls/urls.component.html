@@ -1,4 +1,4 @@
-<div class="shortener">
+<div class="shortener" *ngIf="loadPage">
   <h1>URL Shortener 🔗</h1>
   <form [formGroup]="AddLinkForm" (ngSubmit)="onSubmit()">
     <div class="form-group my-3">

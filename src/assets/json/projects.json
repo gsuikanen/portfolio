@@ -3,7 +3,7 @@
         "name": "URL Shortener",
         "technology": ["fab fa-golang", "fa-solid fa-database", "fab fa-angular"],
         "description": "This is a free link shortening application. Shorten URLs using custom keywords.",
-        "sourceUrl": "https://github.com",
+        "sourceUrl": "https://github.com/gsuikanen/portfolio/tree/master/src/app/urls",
         "previewUrl": "/url",
         "featured": true
     },
@@ -11,7 +11,7 @@
         "name": "Personal data generator",
         "technology": ["fab fa-golang", "fa-solid fa-database", "fab fa-angular"],
         "description": "Application generates fake personal data based on parameters selected (age, gender etc).",
-        "sourceUrl": "https://github.com",
+        "sourceUrl": "https://github.com/gsuikanen/portfolio/tree/master/src/app/data",
         "previewUrl": "/data",
         "featured": true
     }

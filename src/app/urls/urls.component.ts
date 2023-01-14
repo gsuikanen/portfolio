@@ -15,6 +15,7 @@ export class UrlsComponent implements OnInit {
   warningIcon = faExclamationCircle;
   successIcon = faCheckCircle;
   path: string[];
+  loadPage = true;
 
   constructor(private fb: FormBuilder,
     private Api: ApiService,
@@ -22,8 +23,9 @@ export class UrlsComponent implements OnInit {
 
   ngOnInit(): void {
     this.path = this.router.url.split('/')
-    if (this.path.length == 3) {
-      this.Api.getUrl(this.path[2]).subscribe((res: any) => {
+    if (this.path[1] !== 'url') {
+      this.loadPage = false;
+      this.Api.getUrl(this.path[1]).subscribe((res: any) => {
         this.apiResponse = res;
         console.log(this.apiResponse);
         if (this.apiResponse.status == 'OK') {
