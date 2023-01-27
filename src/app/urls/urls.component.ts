@@ -27,20 +27,23 @@ export class UrlsComponent implements OnInit {
       this.loadPage = false;
       this.Api.getUrl(this.path[1]).subscribe((res: any) => {
         this.apiResponse = res;
-        console.log(this.apiResponse);
         if (this.apiResponse.status == 'OK') {
           window.location.href = this.apiResponse.url.long;
+        } else {
+          this.AddLinkForm = this.fb.group({
+            longUrl: ['', Validators.required],
+            ending: '',
+            days: 90
+          });
+          this.loadPage = true;
         }
       })
-    } else {
-      this.AddLinkForm = this.fb.group({
-        longUrl: ['', Validators.required],
-        ending: '',
-        days: 90
-      });
     }
-
-    
+    this.AddLinkForm = this.fb.group({
+      longUrl: ['', Validators.required],
+      ending: '',
+      days: 90
+    });
   }
 
   get longUrl() {

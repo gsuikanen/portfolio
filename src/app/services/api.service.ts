@@ -12,8 +12,8 @@ export class ApiService {
   }
 
   getUrl(ending: string) {
-    let param = new HttpParams()
-    param.append("ending", ending)
+    let body = {ending: ending}
+    const param = new HttpParams({ fromObject: body  });
     return this.http.get<any>(ApiEndpoints.BASE_URL + ApiEndpoints.SHORTENER, {params: param})
     .pipe(retry({count: 3, delay: 500}))
   }
